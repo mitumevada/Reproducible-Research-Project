@@ -13,14 +13,14 @@ Building on this literature, this project focuses on the Polish economy and exam
 
 # 2. Research Objective
 
-The objective of this project is to examine how housing prices in Poland are related to interest rates and inflation over time.
+The objective of this project is to examine how housing prices in Poland are related to interest rates and inflation over time. Using quarterly data from the first quarter of 2010 to the fourth quarter of 2025, we investigate the dynamic interactions among these variables within a macroeconomic framework.
 
 Specifically, we aim to investigate whether changes in interest rates and inflation are associated with subsequent movements in housing prices, and whether these effects occur immediately or with a time lag.
 
 
 # 3. Data
 
-This script constructs a consistent monthly dataset by processing raw data on inflation, interest rates, and housing prices, ensuring comparability across variables for subsequent analysis.
+Since inflation and interest rates are originally reported at a monthly frequency, while the housing price index is available at a quarterly frequency, all variables are converted to a common quarterly frequency to ensure temporal consistency and improve the reliability of the time-series analysis.
 
 ## 3.1 Data Sources
 
