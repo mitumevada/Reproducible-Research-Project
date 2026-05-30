@@ -64,14 +64,18 @@ print(rate.head())
 print(housing.head())
 
 # Step 3: Frequency Alignment
-# Convert housing data to monthly frequency to match other datasets
+# Convert inflation and interest rate data to quarterly frequency to match other datasets
 
-housing = housing.set_index('date')
-housing = housing.resample('ME').ffill()
-housing = housing.reset_index()
+inflation = inflation.set_index('date')
+inflation = inflation.resample('QS').mean()
+inflation = inflation.reset_index()
+
+rate = rate.set_index('date')
+rate = rate.resample('QS').mean()
+rate = rate.reset_index()
 
 # Step 4: Standardize Date Format
-# Convert all date columns to a consistent monthly format to ensure proper alignment across datasets.
+# Convert all date columns to a consistent quarterly format to ensure proper alignment across datasets.
 
 def standardize_date_format(df, col='date'):
     df[col] = pd.to_datetime(df[col])
@@ -128,3 +132,4 @@ def run_pipeline():
 
 if __name__ == "__main__":
     run_pipeline()
+
