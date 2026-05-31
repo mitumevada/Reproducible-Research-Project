@@ -4,6 +4,6 @@ WORKDIR /app
 
 COPY . .
 
-RUN pip install pandas matplotlib
+RUN pip install pandas matplotlib numpy statsmodels
 
-CMD ["python", "src/pipeline.py"]
+CMD ["python", "src/VAR_model.py"]
