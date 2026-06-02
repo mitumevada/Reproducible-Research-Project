@@ -212,7 +212,7 @@ docker pull yuuuuchenn/macro-project:latest
 ```
 2. Run the project
 ```bash
-docker run yuuuuchenn/macro-project:latest
+docker run --rm -v "$(pwd)/output:/app/output" yuuuuchenn/macro-project:latest
 ```
 
 # 9. Tools and Libraries
