@@ -60,27 +60,49 @@ print(lag_selection.summary())
 
 #Fit model using selected lag
 optimal_lag = lag_selection.aic
-results = model.fit(optimal_lag)
+var_results = model.fit(optimal_lag)
+
+print(var_results.summary())
 
 #Impulse response functions
-irf = results.irf(12)
+irf = var_results.irf(12)
 irf.plot(orth=False)
 
 #Granger Causality test
 from statsmodels.tsa.stattools import grangercausalitytests
-print("\n=== Granger Causality Tests ===")
-# Inflation → Interest Rate
-print("\nInflation causes Interest Rate?")
-grangercausalitytests(final_df[['interest_rate', 'inflation']], maxlag=4)
-#Interest Rate → Inflation
-print("\nInterest Rate causes Inflation?")
-grangercausalitytests(final_df[['inflation', 'interest_rate']], maxlag=4)
-# Interest Rate → Housing Price
-print("\nInterest Rate causes Housing Price?")
-grangercausalitytests(final_df[['ln_housing_price', 'interest_rate']], maxlag=4)
-# Inflation → Housing Price
-print("\nInflation causes Housing Price?")
-grangercausalitytests(final_df[['ln_housing_price', 'inflation']], maxlag=4)
+import pandas as pd
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
+
+pairs = [
+    ('inflation', 'ln_housing_price'),
+    ('interest_rate', 'ln_housing_price'),
+    ('inflation', 'interest_rate'),
+    ('interest_rate', 'inflation')
+]
+
+granger_results = []
+
+for cause, target in pairs:
+
+    test = grangercausalitytests(
+        df_diff[[target, cause]],
+        maxlag=4,
+        verbose=False
+    )
+
+    p_value = test[4][0]['ssr_chi2test'][1]
+
+    granger_results.append({
+        'Cause': cause,
+        'Target': target,
+        'Lag': 4,
+        'p-value': round(p_value, 4)
+    })
+
+granger_table = pd.DataFrame(granger_results)
+
+print(granger_table)
 
 
-print(results.summary())
+print("VAR model completed successfully.")

@@ -67,17 +67,25 @@ A Vector Autoregression (VAR) Model was fitted to the stationary, differenced da
 
 ## 5. How to Run
 ### Run using Python
-Run the data processing pipeline:
+1.Run the data processing pipeline:
 ``` bash
 python src/pipeline.py
 
 ```
+2.Run VAR_model.py:
+```bash
+python src/VAR_model.py
+```
+
 ## 6. Reproducibility with Docker
 The project can be reproduced using docker:
 1. Build the Docker image: 
 ```bash
 docker build -t macro-project .
+```
 2. Run the project
+
+```bash
 docker run macro-project 
 ```
 
@@ -92,7 +100,7 @@ docker run macro-project
 ## 8. Final Conclusion
 - This study examined the relationship between inflation, interest rates, and housing prices in Poland using VAR.
 - The results show that while the VAR model captures dynamic interactions between the variables, the impulse response analysis indicates how shocks propagate through the system over time.
-- The Granger Causality test suggests that there is no strong predictive causality between the three variables, meaning past values of one variables do not significantly improve the prediction of another.
+- The Granger Causality test suggests that inflation plays an important role in predicting housing prices, while the relationship between inflation and interest rates appears to be bidirectional but stronger from interest rates to inflation.
 - Overall, the findings indicate that macroeconomic relationships are complex and are likely influenced by broader structural and external factors beyond the scope of this model.
 
 
