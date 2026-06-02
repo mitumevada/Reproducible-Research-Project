@@ -202,14 +202,13 @@ Overall, the results suggest that inflation is a more important driver of housin
 # 8. Reproducibility with Docker
 The project can be reproduced using docker:
 
-1. Build the Docker image: 
+1. Pull the Docker image
 ```bash
-docker build -t macro-project .
+docker pull yuuuuchenn/macro-project:latest
 ```
 2. Run the project
-
 ```bash
-docker run macro-project 
+docker run yuuuuchenn/macro-project:latest
 ```
 
 # 9. Tools and Libraries
