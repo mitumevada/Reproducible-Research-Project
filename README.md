@@ -1,6 +1,6 @@
 # Poland Macroeconomic Time Series Analysis
 
-# 1. Research Backgroud
+# 1. Research Background
 
 The relationship between macroeconomic conditions and housing market dynamics has been widely studied in the economic literature. In particular, a large body of research highlights the role of monetary policy variables, such as interest rates, in shaping housing price movements. Lower interest rates tend to reduce borrowing costs and stimulate housing demand, while higher rates may exert downward pressure on housing prices.
 
@@ -16,7 +16,6 @@ Building on this literature, this project focuses on the Polish economy and exam
 The objective of this project is to examine how housing prices in Poland are related to interest rates and inflation over time. Using quarterly data from the first quarter of 2010 to the fourth quarter of 2025, we investigate the dynamic interactions among these variables within a macroeconomic framework.
 
 Specifically, we aim to investigate whether changes in interest rates and inflation are associated with subsequent movements in housing prices, and whether these effects occur immediately or with a time lag.
-
 
 # 3. Data
 
@@ -50,12 +49,52 @@ Merge datasets on the time dimension and remove missing observations to obtain a
  - Stored in : data/processed/final_dataset.csv
  - Generated through the data processing pipeline
 
-## 3.4 How to run
+## 4. Methodology and Key Findings
+### 4.1 Stationary Testing (ADF Test)
+Macroeconomic variables inherently follow long-term trends. Augmented Dickey-Fuller(ADF) tests on raw levels confirmed non-stationary (P>0.05). First-order differencing was applied to remove trends and stabilize the data, achieving full stationary across all series.
 
+### 4.2 VAR Model 
+A Vector Autoregression (VAR) Model was fitted to the stationary, differenced data.
+- Lag Order Selection: Based on the minimum Akaike Information Criterion (AIC) and Final Prediction Error (FPE), an optimal lag of 4 quarters was selected.
+
+### 4.3 Empirical Results
+- Real Estate has Massive Momentum: Property prices in Poland are highly self-predictive. If the housing market performed strongly in previous quarters, that built-in momentum carries directly over into current property values with high statistical confidence (p=0.014).
+
+- Inflation Hits on a One-Year Fuse: We found a clear, delayed relationship with consumer prices. A spike in inflation takes about a year before it fully pushes property values upward (0.24).This lag reflects the time it takes for broad inflation to raise material construction costs and shift public market expectations.
+
+- Short-Term Interest Rate Insulation: Interestingly, when looking at quarter-to-quarter adjustments within this specific model, short-term fluctuations in interest rates did not show an immediate, overwhelming impact on property prices, indicating that structural market momentum and inflation pass-throughs act as the dominant drivers.
+
+
+## 5. How to Run
+### Run using Python
 Run the data processing pipeline:
 ``` bash
 python src/pipeline.py
+
 ```
+## 6. Reproducibility with Docker
+The project can be reproduced using docker:
+1. Build the Docker image: 
+```bash
+docker build -t macro-project .
+2. Run the project
+docker run macro-project 
+```
+
+## 7. Tools and Libraries
+- Python 3.11
+- pandas
+- numpy
+- matplotlib
+- statsmodels
+- docker
+
+## 8. Final Conclusion
+- This study examined the relationship between inflation, interest rates, and housing prices in Poland using VAR.
+- The results show that while the VAR model captures dynamic interactions between the variables, the impulse response analysis indicates how shocks propagate through the system over time.
+- The Granger Causality test suggests that there is no strong predictive causality between the three variables, meaning past values of one variables do not significantly improve the prediction of another.
+- Overall, the findings indicate that macroeconomic relationships are complex and are likely influenced by broader structural and external factors beyond the scope of this model.
+
 
 
 
