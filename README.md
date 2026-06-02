@@ -103,6 +103,10 @@ docker run macro-project
 - The Granger Causality test suggests that inflation plays an important role in predicting housing prices, while the relationship between inflation and interest rates appears to be bidirectional but stronger from interest rates to inflation.
 - Overall, the findings indicate that macroeconomic relationships are complex and are likely influenced by broader structural and external factors beyond the scope of this model.
 
+## 9. AI Disclosure Statement
+
+Artificial intelligence tools were used in three ways during this project: (1) for language refinement to enhance the clarity of the text, (2) to assist in drawing conclusions and synthesizing insights from our results, and (3) to identify and apply fixes to the code base.
+
 
 
 
