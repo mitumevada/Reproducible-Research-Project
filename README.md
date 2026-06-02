@@ -220,16 +220,7 @@ docker run macro-project
 - statsmodels
 - docker
 
-<<<<<<< HEAD
-=======
-
-## 10. AI Disclosure Statement
+# 10. AI Disclosure Statement
 
 Artificial intelligence tools were used in three ways during this project: (1) for language refinement to enhance the clarity of the text, (2) to assist in drawing conclusions and synthesizing insights from our results, and (3) to identify and apply fixes to the code base.
-
-
-
-
-
->>>>>>> 22a39f0c788df844836dec71be9ed81540424ba9
 
