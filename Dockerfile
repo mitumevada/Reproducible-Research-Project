@@ -6,10 +6,7 @@ COPY . .
 
 RUN pip install pandas matplotlib numpy statsmodels notebook nbconvert
 
-CMD ["sh","-c",
-"mkdir -p /app/output && \
-python src/pipeline.py && \
-jupyter nbconvert --execute --to html 'Macroeconomic TSA.ipynb' \
---output-dir=/app/output"
-]
+RUN chmod +x run.sh
+
+CMD ["./run.sh"]
 
