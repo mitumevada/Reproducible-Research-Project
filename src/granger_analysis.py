@@ -1,12 +1,11 @@
 from statsmodels.tsa.stattools import grangercausalitytests
 import pandas as pd
 import warnings
-warnings.filterwarnings("ignore", category=FutureWarning)
+
 
 class GrangerAnalysis:
 
     def __init__(self, data):
-
         self.data = data
 
     def run(self):
@@ -22,11 +21,14 @@ class GrangerAnalysis:
 
         for cause, target in pairs:
 
-            test = grangercausalitytests(
-                self.data[[target, cause]],
-                maxlag=4,
-                verbose=False
-            )
+            with warnings.catch_warnings():
+                warnings.simplefilter("ignore")
+
+                test = grangercausalitytests(
+                    self.data[[target, cause]],
+                    maxlag=4,
+                    verbose=False
+                )
 
             p_value = test[4][0]['ssr_chi2test'][1]
 
