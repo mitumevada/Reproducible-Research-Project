@@ -23,22 +23,27 @@ Specifically, we aim to investigate whether changes in interest rates and inflat
 ```text
 Reproducible-Research-Project/
 │
-├── data/
-│   ├── raw/                     # Raw macroeconomic data
-│   │   ├── housing_price.csv
-│   │   ├── inflation.csv
-│   │   └── interest_rate.csv
-│   │
-│   └── processed/               # Cleaned and merged dataset
-│       └── final_dataset.csv
+├── data
+│   ├── processed
+│   │   └── final_dataset.csv
+│   └── raw
+│       ├── housing_price.csv
+│       ├── inflation.csv
+│       └── interest_rate.csv
 │
-├── src/
-│   ├── pipeline.py              # Data cleaning and preprocessing pipeline
-│   └── VAR_model.py             # VAR, IRF, and Granger causality analysis
+├── src
+│   ├── __init__.py
+│   ├── adf_analysis.py
+│   ├── data_loader.py
+│   ├── granger_analysis.py
+│   ├── irf_analysis.py
+│   ├── pipeline.py
+│   └── var_analysis.py
 │
-├── Dockerfile                   # Docker configuration for reproducibility
-├── Macroeconomic TSA.ipynb      # Jupyter Notebook version of the analysis
-└── README.md                    # Project documentation
+├── .gitignore
+├── Dockerfile
+├── Macroeconomic TSA.ipynb
+└── README.md
 ```
 
 # 4. Data
