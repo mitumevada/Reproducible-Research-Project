@@ -4,12 +4,12 @@ import numpy as np
 
 class DataLoader:
 
-    def load_data(self):
+    def load_data(self, file_path):
 
-        df = pd.read_csv(
-            "./data/processed/final_dataset.csv"
-        )
+        df = pd.read_csv(file_path)
+        return df
 
+    def preprocess_data(self, df):
         df['date'] = pd.to_datetime(df['date'])
 
         df = df.set_index('date')

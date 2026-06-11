@@ -6,7 +6,7 @@ class VARAnalysis:
 
         self.data = data
 
-        self.model = None
+        self.model = VAR(self.data)
 
         self.results = None
 
