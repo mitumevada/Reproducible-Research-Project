@@ -8,7 +8,7 @@ class GrangerAnalysis:
     def __init__(self, data):
         self.data = data
 
-    def run(self, max_lag):
+    def run(self):
 
         pairs = [
             ('inflation', 'ln_housing_price'),
@@ -26,7 +26,7 @@ class GrangerAnalysis:
 
                 test = grangercausalitytests(
                     self.data[[target, cause]],
-                    maxlag=max_lag,
+                    maxlag=4,
                     verbose=False
                 )
 
